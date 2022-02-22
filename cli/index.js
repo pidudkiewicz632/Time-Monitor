@@ -2,8 +2,9 @@
 
 const { program } = require("commander");
 const addUser = require('./commands/addUser');
-const deleteUser = require("./commands/deleteUser");
+const deleteUser = require("./commands/updateUser");
 const clc = require("cli-color");
+require("dotenv").config();
 
 program
   .command("addUser")
