@@ -142,13 +142,14 @@ export default {
       this.snackbar = true
       await this.timeValidation()
       this.$refs.formActivity.validate()
+      
       if (this.validAddActivity) {
         this.loading = true;
         if (this.edit) {
           this.$axios
             .put('/api/activity/edit', {
-              startTime: this.startTime,
-              endTime: this.endTime,
+              startTime: moment(this.startTime),
+              endTime: moment(this.endTime),
               description: this.description,
               id: this.data.id,
             })
@@ -167,8 +168,8 @@ export default {
         } else {
           this.$axios
             .post('/api/activity/add', {
-              startTime: this.startTime,
-              endTime: this.endTime,
+              startTime: moment(this.startTime),
+              endTime: moment(this.endTime),
               description: this.description,
               userId: this.showSelectUser
                 ? this.selectedUser
